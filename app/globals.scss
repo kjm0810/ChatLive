@@ -148,6 +148,19 @@ body {
   }
 }
 
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+}
+
 .login-page {
 
   .login {
@@ -166,6 +179,7 @@ body {
     align-items: center;
     box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.4);
     border-radius: 10px;
+    background: #FFF;
 
     .title {
       font-size: 20px;
@@ -296,20 +310,39 @@ body {
       padding: 2px 10px;
       border-radius: 12px;
       color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+
+      span {
+        word-break: keep-all;
+        color: #FFF;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
     }
   }
 }
 
+.chat-page {
+  background: #f1ffea;
+  min-height: 100dvh;
+  max-height: 100dvh;
+}
+
 .message-wrap {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   top: 77px;
   gap: 10px;
   max-height: calc(100dvh - 70px - 77px);
   overflow: auto;
-  background: #f1ffea;
   min-height: calc(100dvh - 70px - 77px);
+  padding: 20px calc((100dvw - 1400px) / 2);
 
   .message {
     padding: 15px;
@@ -320,6 +353,7 @@ body {
     width: fit-content;
     max-width: 80%;
     position: relative;
+    margin-left: 10px;
 
     span.time {
       position: absolute;
@@ -333,6 +367,7 @@ body {
     &.me {
       background: #d8d65f;
       align-self: end;
+      margin-right: 10px;
 
       span.time {
         position: absolute;
