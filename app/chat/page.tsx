@@ -6,7 +6,7 @@ export default function Home() {
     <main>
       <div className="chat-wrap">
         <ChatHeader />
-        <ChatLayer key={'fdsklahfdslkjfhdslka'}  />
+        <ChatLayer />
       </div>
     </main>
   );

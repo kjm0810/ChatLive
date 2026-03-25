@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool, QueryResultRow } from 'pg';
 
 const pool = new Pool({
     host: process.env.DB_HOST,
@@ -17,8 +17,8 @@ const pool = new Pool({
  * 최대한 유지하기 위해 rows 배열만 반환합니다.
  */
 const db = {
-    query: async (text: string, params?: any[]) => {
-        const result = await pool.query(text, params);
+    query: async <T extends QueryResultRow = QueryResultRow>(text: string, params?: unknown[]) => {
+        const result = await pool.query<T>(text, params);
         return result.rows;
     },
 };

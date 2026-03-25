@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
     const router = useRouter();
-    const { user, setUser, logout } = useAuth();
+    const { setUser } = useAuth();
     const [id, setId] = useState('guest1');
     const [pw, setPw] = useState('guest1');
 
@@ -67,7 +67,7 @@ export default function Login() {
         <div className="login-page">
             <div className="login">
                 <div className="title">
-                    로그인, 회원가입
+                    <span className="heading">로그인 / 회원가입</span>
                     <div className="exp">
                         접속 시도한 정보가 존재하면 로그인, 없으면 회원가입으로 처리됩니다. <br/>
                         임의 접속을 원하시면 guest1 / guest1로 접속 해주세요.

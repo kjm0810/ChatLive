@@ -9,7 +9,6 @@ import socket from "@/lib/socket";
 export default function ChatLayer() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [specialMessages, setSpecialMessages] = useState<Message[]>([]);
   const [nowSpecialMessage, setNowSpecialMessage] = useState<Message | null>(null);
   const [isScrollDown, setIsScrollDown] = useState(true);
 
@@ -53,7 +52,7 @@ export default function ChatLayer() {
     if (!user) router.push("/login");
     const interval = setInterval(() => inputRef.current?.focus(), 1000);
     return () => clearInterval(interval);
-  }, [user]);
+  }, [router, user]);
 
   // Socket 연결
   useEffect(() => {
@@ -75,7 +74,6 @@ export default function ChatLayer() {
       setTimeout(() => {
         setNowSpecialMessage(msg);  
       }, 100);
-      // setSpecialMessages(prev => [...prev, msg]);
       
     });
 
@@ -84,7 +82,7 @@ export default function ChatLayer() {
       socket.off("chat");
       socket.off("chat-special");
     };
-  }, []);
+  }, [router, user]);
   
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) { // Shift를 누르지 않은 경우
